@@ -14,5 +14,4 @@ public interface Response {
   Map<String, String> headers();
 
   int status();
-
 }

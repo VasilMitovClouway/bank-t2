@@ -1,5 +1,7 @@
 package core;
 
+import com.google.common.base.Objects;
+
 /**
  * @author Vasil Mitov <v.mitov.clouway@gmail.com>
  */
@@ -66,5 +68,27 @@ public class Question {
 
   public String getAnswerC() {
     return answerC;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Question question1 = (Question) o;
+    return Objects.equal(tutorId, question1.tutorId) &&
+            Objects.equal(category, question1.category) &&
+            Objects.equal(module, question1.module) &&
+            Objects.equal(subModule, question1.subModule) &&
+            Objects.equal(theme, question1.theme) &&
+            Objects.equal(difficulty, question1.difficulty) &&
+            Objects.equal(question, question1.question) &&
+            Objects.equal(answerA, question1.answerA) &&
+            Objects.equal(answerB, question1.answerB) &&
+            Objects.equal(answerC, question1.answerC);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(tutorId, category, module, subModule, theme, difficulty, question, answerA, answerB, answerC);
   }
 }

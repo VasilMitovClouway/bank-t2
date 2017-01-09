@@ -1,11 +1,16 @@
+import com.clouway.nvuapp.adapter.PersistentQuestionRepository;
 import com.clouway.nvuapp.core.InMemoryQuestionRepository;
-import com.clouway.nvuapp.core.TutorRepository;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import core.PageHandler;
 import core.PageRegistry;
 import core.Question;
-import http.controllers.*;
+import http.controllers.AdminHomePageHandler;
+import http.controllers.AdminQuestionListHandler;
+import http.controllers.HomeHandler;
+import http.controllers.QuestionListHandler;
+import http.controllers.RegisterQuestionHandler;
+import http.controllers.TutorHandler;
 import http.servlet.PageHandlerServlet;
 import http.servlet.ResourceServlet;
 import http.servlet.ServerPageRegistry;
@@ -27,18 +32,20 @@ public class JettyMain {
   public static void main(String[] args) {
 
     final PageRegistry registry = new ServerPageRegistry(
-            ImmutableMap.<String, PageHandler>of(
-                    "/", new HomeHandler(),
-                    "/adminHome", new AdminHomePageHandler(),
-                    "/questions", new QuestionListHandler("1234", new InMemoryQuestionRepository(
+            ImmutableMap.<String, PageHandler>builder()
+                    .put("/", new HomeHandler())
+                    .put("/adminHome", new AdminHomePageHandler())
+                    .put("/questions", new QuestionListHandler("1234", new InMemoryQuestionRepository(
                             ImmutableMap.<String, List<Question>>of("1234",
                                     Lists.newArrayList(
                                             new Question("1234", "CAT1", 23, 1, 1, 1, "How are you today?", "I feel Good", "I feel bad", "I feed unusual"),
                                             new Question("1234", "CAT2", 23, 1, 1, 1, "How you feel today?", "I feel Good", "I feel bad", "I feed unusual")
                                     )
                             )
-                    )),
-                    "/adminQuestions", new AdminQuestionListHandler("admin", new InMemoryQuestionRepository(
+                    )))
+                    .put("/registerquestion", new RegisterQuestionHandler("1234", new PersistentQuestionRepository(
+                            new DataStore(new ConnectionProvider("nvuApp","clouway.com","localhost")))))
+                    .put("/adminQuestions", new AdminQuestionListHandler("admin", new InMemoryQuestionRepository(
                             ImmutableMap.<String, List<Question>>of("1234",
                                     Lists.newArrayList(
                                             new Question("1234", "CAT1", 23, 1, 1, 1, "User: 1234 - How are you today?", "I feel Good", "I feel bad", "I feed unusual"),
@@ -50,9 +57,9 @@ public class JettyMain {
                                             new Question("0987", "CAT2", 23, 1, 1, 1, "User: 0987 - How you feel today?", "I feel Good", "I feel bad", "I feed unusual")
                                     )
                             )
-                    )),
-                    "/registration", new TutorHandler(new PersistentTutorRepository(new DataStore(new ConnectionProvider("localhost","nvuApp", "root"))))
-            ),
+                    )))
+                    .put("/registration", new TutorHandler(new PersistentTutorRepository(new DataStore(new ConnectionProvider("localhost", "nvuApp", "root"))))
+                    ).build(),
             new HomeHandler()
     );
 

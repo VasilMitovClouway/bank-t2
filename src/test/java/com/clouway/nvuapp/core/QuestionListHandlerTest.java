@@ -23,7 +23,7 @@ public class QuestionListHandlerTest {
 
   @Test
   public void listFewQuestion() throws Exception {
-    final Request request = new FakeRequest();
+    final Request request = new FakeRequest(Collections.emptyMap());
 
     final InMemoryQuestionRepository questionRepository = new InMemoryQuestionRepository(
             ImmutableMap.<String, List<Question>>of("1234", Lists.newArrayList(

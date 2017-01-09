@@ -10,7 +10,6 @@ public class QuestionBuilder {
     return new QuestionBuilder();
   }
 
-
   private String tutorId = "IF000";
   private String category = "A0";
   private Integer mod = 0;
@@ -80,5 +79,4 @@ public class QuestionBuilder {
   public Question build() {
     return new Question(tutorId, category, mod, subMod, theme, diff, question, answerA, answerB, answerC);
   }
-
 }

@@ -35,7 +35,9 @@ public class TutorHandlerTest {
     }});
     Response response = tutorHandler.handle(request);
 
-    assertThat(reader().read(response), containsString("<br>\n" + "    \n" + "</body>"));
+    assertThat(reader().read(response), containsString("<p id=\"message\"></p>\n" +
+            "    \n" +
+            "</body>"));
   }
 
   @Test

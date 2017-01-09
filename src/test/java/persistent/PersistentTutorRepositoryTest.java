@@ -20,7 +20,7 @@ import static org.hamcrest.core.Is.is;
  * @author Denis Dimitrov <denis.k.dimitrov@gmail.com>.
  */
 public class PersistentTutorRepositoryTest {
-  private ConnectionProvider connectionProvider = new ConnectionProvider("localhost","nvuApp", "root");
+  private ConnectionProvider connectionProvider = new ConnectionProvider("nvuApp","clouway.com","localhost");
   private DataStore dataStore = new DataStore(connectionProvider);
   private PersistentTutorRepository tutors = new PersistentTutorRepository(dataStore);
 
