@@ -3,8 +3,11 @@ package loadquestionlisttest;
 import core.Request;
 
 import javax.servlet.http.Cookie;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class FakeRequest implements Request {
+<<<<<<< cd59b69c7917e40dba43b2ddf26014bf389ef5ec
   @Override
   public String param(String name) {
     return null;
@@ -14,4 +17,25 @@ public class FakeRequest implements Request {
   public Cookie cookie(String cookieName) {
     return null;
   }
+=======
+  private Map<String, Object> params = new LinkedHashMap<>();
+
+  @Override
+  public String param(String name) {
+    return String.valueOf(params.get(name));
+  }
+
+  @Override
+  public Cookie cookie(String cookieName) {
+    return null;
+  }
+
+  public void addParam(String name, String param) {
+    params.put(name, param);
+  }
+
+  public void setParams(Map params) {
+    this.params = params;
+  }
+>>>>>>> nvuApp: registering questions.
 }

@@ -1,5 +1,6 @@
 package com.clouway.nvuapp.core;
 
+import com.google.common.base.Optional;
 import core.Question;
 
 import java.util.*;
@@ -18,6 +19,19 @@ public class InMemoryQuestionRepository implements QuestionRepository {
       return tutorToQuestionsListMap.get(tutorId);
     }
     return Collections.emptyList();
+  }
+
+  @Override
+  public String register(Question question) {
+    List<Question> questionsForTutor = tutorToQuestionsListMap.get(question.getTutorId());
+    questionsForTutor.add(question);
+    tutorToQuestionsListMap.put(question.getTutorId(), questionsForTutor);
+    return null;
+  }
+
+  @Override
+  public Optional<Question> findQuestionMatching(String tutorId, String category, String model, String subModel, String theme, String diff, String question) {
+    return Optional.absent();
   }
 
   @Override

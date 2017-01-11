@@ -25,7 +25,12 @@ public class ConnectionProvider implements Provider<Connection> {
     Connection connection = null;
     try {
       Class.forName("com.mysql.jdbc.Driver").newInstance();
+<<<<<<< cd59b69c7917e40dba43b2ddf26014bf389ef5ec
       connection = DriverManager.getConnection("jdbc:mysql://" + host + "/" + database + "?user=root&password=" + password + "");
+=======
+
+      connection = DriverManager.getConnection("jdbc:mysql://" + host + "/" + database + "?user=root&password=" + password);
+>>>>>>> nvuApp: registering questions.
     } catch (IllegalAccessException e) {
       e.printStackTrace();
     } catch (InstantiationException e) {

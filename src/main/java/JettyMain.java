@@ -1,3 +1,4 @@
+import com.clouway.nvuapp.adapter.PersistentQuestionRepository;
 import com.clouway.nvuapp.core.InMemoryQuestionRepository;
 import com.clouway.nvuapp.core.TutorRepository;
 import com.google.common.collect.ImmutableMap;
@@ -5,14 +6,25 @@ import com.google.common.collect.Lists;
 import core.PageHandler;
 import core.PageRegistry;
 import core.Question;
+<<<<<<< cd59b69c7917e40dba43b2ddf26014bf389ef5ec
 import http.controllers.*;
+=======
+import http.controllers.AdminHomePageHandler;
+import http.controllers.AdminQuestionListHandler;
+import http.controllers.HomeHandler;
+import http.controllers.QuestionListHandler;
+import http.controllers.RegisterQuestionHandler;
+>>>>>>> nvuApp: registering questions.
 import http.servlet.PageHandlerServlet;
 import http.servlet.ResourceServlet;
 import http.servlet.ServerPageRegistry;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import persistent.adapter.ConnectionProvider;
+<<<<<<< cd59b69c7917e40dba43b2ddf26014bf389ef5ec
 import persistent.adapter.PersistentTutorRepository;
+=======
+>>>>>>> nvuApp: registering questions.
 import persistent.dao.DataStore;
 
 import javax.servlet.ServletContext;
@@ -38,6 +50,8 @@ public class JettyMain {
                                     )
                             )
                     )),
+                    "/registerquestion", new RegisterQuestionHandler("1234", new PersistentQuestionRepository(
+                            new DataStore(new ConnectionProvider("nvuApp", "clouway.com", "localhost")))),
                     "/adminQuestions", new AdminQuestionListHandler("admin", new InMemoryQuestionRepository(
                             ImmutableMap.<String, List<Question>>of("1234",
                                     Lists.newArrayList(
@@ -50,9 +64,13 @@ public class JettyMain {
                                             new Question("0987", "CAT2", 23, 1, 1, 1, "User: 0987 - How you feel today?", "I feel Good", "I feel bad", "I feed unusual")
                                     )
                             )
+<<<<<<< cd59b69c7917e40dba43b2ddf26014bf389ef5ec
                     )),
                     "/registration", new TutorHandler(new PersistentTutorRepository(new DataStore(new ConnectionProvider("localhost","nvuApp", "root"))))
             ),
+=======
+                    ))),
+>>>>>>> nvuApp: registering questions.
             new HomeHandler()
     );
 

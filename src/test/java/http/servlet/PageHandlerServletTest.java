@@ -21,7 +21,6 @@ public class PageHandlerServletTest {
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
 
-
   @Test
   public void happyPath() throws Exception {
     final PageRegistry registry = context.mock(PageRegistry.class);
