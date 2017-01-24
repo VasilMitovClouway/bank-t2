@@ -102,4 +102,8 @@ public class Questionnaire {
     }
     return false;
   }
+
+  public boolean noAnswers() {
+    return answers.isEmpty();
+  }
 }

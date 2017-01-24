@@ -22,6 +22,6 @@ public class JsonCodecTest {
     String data = codec.marshallToString(questionnaire);
     Questionnaire unmarshalledQuestionnaire = codec.unmarshall(data);
     assertThat(questionnaire, is(unmarshalledQuestionnaire));
-    assertTrue(questionnaire.noAnswers());
+
   }
 }
