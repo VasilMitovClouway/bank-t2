@@ -7,40 +7,41 @@
 </head>
 <body>
 <#include "/adminNavbar.ftl">
-<h1>
-    <#if message??>
+    <h1><#if message??>
         ${message}
     </#if>
+    </h1>
     <br>
     <#list values>
-
-            <#items as question>
-                <table class="table">
+        <div class="questionList">
+        <#items as question>
+                <table>
                     <tr><th>Въпрос ${question?index+1}<br>
                         ${question.question}
                     </th></tr>
                     <tr><td>A) ${question.answerA}</td></tr>
                     <tr><td>B) ${question.answerB}</td></tr>
                     <tr><td>C) ${question.answerC}</td></tr>
+
                 </table><br>
             </#items>
+        </div>
             <br>
-            <#if questionMessage??>
+        <h1><#if questionMessage??>
                 ${questionMessage}
             </#if>
-            <form action="/adminHome/questionnaire" method="post">
+            </h1>
+            <form class="questionList" action="/adminHome/questionnaire" method="post">
                 <#include "/questionnaireFilter.ftl">
             </form>
         <#else>
-            <form action="/adminHome/questionnaire" method="post">
+            <form class="questionList" action="/adminHome/questionnaire" method="post">
                 <#include "/questionnaireFilter.ftl">
             </form>
-            <p>Няма въпроси все още.</p>
+            <h1>Няма въпроси все още.</h1>
     </#list>
-</h1>
-
 <div>
-    <form action="/adminHome/finishquestionnaire">
+    <form class="questionList" action="/adminHome/finishquestionnaire">
         <input class="buttonlink" type="submit" value="Завърши въпросник"/>
     </form>
 </div>

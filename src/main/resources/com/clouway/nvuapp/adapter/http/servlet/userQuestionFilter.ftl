@@ -1,6 +1,7 @@
+<div class="selectFilter">
 <p style="display:inline">Категория</p>
-<select name="category">
-    <option value="non">Неизбрано</option>
+<select class="select" name="category">
+    <option value="non">Всички</option>
     <option value="A1">A1</option>
     <option value="A2">A2</option>
     <option value="A3">A3</option>
@@ -13,8 +14,8 @@
     <option value="B3">B3</option>
 </select>
 <p style="display:inline">Модул</p>
-<select name="module">
-    <option value="non">Неизбрано</option>
+<select class="select" name="module">
+    <option value="non">Всички</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -34,8 +35,8 @@
     <option value="17">17</option>
 </select>
 <p style="display:inline">Подмодул</p>
-<select name="submodule">
-    <option value="non">Неизбрано</option>
+<select class="dropDownBox" name="submodule">
+    <option value="non">Всички</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -60,11 +61,12 @@
     <option value="22">22</option>
 </select>
 <p style="display:inline">Тема</p>
-<input style="display:inline" type="number" name="theme" min="0" max="40" value="0">
+<input  class="dropDownBox" style="display:inline" type="number" name="theme" min="0" max="40" value="0">
 <p style="display:inline">Трудност</p>
-<select name="difficulty">
-    <option value="non">Неизбрано</option>
+<select class="dropDownBox" name="difficulty">
+    <option value="non">Всички</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
 </select>
+</div>

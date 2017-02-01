@@ -6,20 +6,15 @@
     <link rel="stylesheet" type="text/css" href="assets/project.css">
 </head>
 <body>
-<form action="/login" method="post">
-    <ul>
-        <li><label for="loginid"></label></li>
-        <li><input placeholder="ID" id="loginid" type="text" name="LoginID" size="16"/></li>
-        <li><label for="loginpass"></label></li>
-        <li><input placeholder="Password" id="loginpass" type="password" name="LoginPass" size="16"/></li>
-        <li><input type="submit" name="submit" value="Вход"/></li>
-    </ul>
+<form class="loginForm">
+    <input placeholder="ID" id="loginid" type="text" name="LoginID" size="16"/>
+    <input placeholder="Password" id="loginpass" type="password" name="LoginPass" size="16"/>
+    <input type="submit" onsubmit="action='/login' method= 'post'" value="Вход"/>
+    <input type="submit" onsubmit="action='/registration' method= 'post'" value="Регистрация"/>
+    <br>
+    <#if message??>
+        ${message}
+    </#if>
 </form>
-<form action="/registration">
-    <input class="buttonlink" type="submit" value="Регистрация"/>
-</form>
-<#if message??>
-    ${message}
-</#if>
 </body>
 </html>

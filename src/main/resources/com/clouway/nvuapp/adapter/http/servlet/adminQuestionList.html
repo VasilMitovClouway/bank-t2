@@ -7,10 +7,11 @@
 </head>
 <body>
 <#include "/adminNavbar.ftl">
-    <form action="/adminHome/adminQuestions" method="post">
+    <form class="questionList" action="/adminHome/adminQuestions" method="post">
         <#include "/adminQuestionFilter.ftl">
             <input type="submit" onclick="submit" value="Филтрирай">
     </form>
+<div class="questionList">
 <#list questionList as question>
     <table class="table">
         <tr><th>Преподавател: ${question.tutorId}<br>
@@ -24,5 +25,6 @@
     <#else>
         <p>Няма регистрирани въпроси до момента</p>
 </#list>
+</div>
 </body>
 </html>

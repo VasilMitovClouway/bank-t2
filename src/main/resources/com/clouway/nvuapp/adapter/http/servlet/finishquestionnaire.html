@@ -10,8 +10,9 @@
     <#if message??>
         <h1>${message}</h1>
     </#if>
-    <ul>
+
         <#list values>
+            <div class="questionList">
             <#items as question>
                 <table class="table">
                     <th>${question.question}<br>
@@ -30,22 +31,22 @@
                     </tr>
                 </table>
             </#items>
-
+                </div>
             <#else>
                 <p>Въпросник неможе да няма въпроси във него моля върнете се и добавете въпроси първо</p>
         </#list>
-    </ul>
-    <h1>Отговори към въпросника:</h1>
-
-    <table class="table">
-        <#list answers as key, value>
-            <tr>
-                <td>${key}: ${value}</td>
-            </tr>
-            <#else>
-                Имаше проблем със отговорите
-        </#list>
-    </table>
+    <div class="questionList">
+        <table class="table">
+            <h1>Отговори към въпросника:</h1>
+            <#list answers as key, value>
+                <tr>
+                    <td>${key}: ${value}</td>
+                </tr>
+                <#else>
+                    Имаше проблем със отговорите
+            </#list>
+        </table>
+    </div>
     </form>
 </body>
 </html>

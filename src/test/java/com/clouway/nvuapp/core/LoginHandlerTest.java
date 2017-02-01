@@ -39,9 +39,9 @@ public class LoginHandlerTest {
       will(returnValue(tutors));
     }});
     Response response = loginHandler.handle(fakeRequest);
-    assertThat(reader().read(response), containsString("</form>\n" +
-            "    \n" +
-            "</body>"));
+    assertThat(reader().read(response), containsString("<br>\n" +
+            "            \n" +
+            "</form>"));
   }
 
   @Test

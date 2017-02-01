@@ -54,7 +54,7 @@ public class QuestionListHandlerTest {
 
     Response response = questionListHandler.handle(request, new Tutor("::any tutor id::", ""));
 
-    assertThat(reader().read(response), containsString("Няма добавени въпроси до момента"));
+    assertThat(reader().read(response), containsString("Няма регистрирани въпроси до момента"));
   }
 
   @Test
@@ -68,6 +68,6 @@ public class QuestionListHandlerTest {
 
     Response response = questionListHandler.handle(request, new Tutor("1234", ""));
 
-    assertThat(reader().read(response), containsString("Няма добавени въпроси до момента"));
+    assertThat(reader().read(response), containsString("Няма регистрирани въпроси до момента"));
   }
 }

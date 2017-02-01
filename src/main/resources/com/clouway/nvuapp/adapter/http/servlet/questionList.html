@@ -7,22 +7,23 @@
 </head>
 <body>
 <#include "/userNavbar.ftl">
-    <form action="/questions" method="post">
+    <form class="questionList" action="/questions" method="post">
         <#include "/userQuestionFilter.ftl">
             <input type="submit" onclick="submit" value="Филтрирай">
     </form>
-<p>Вашите въпроси са:</p><br>
-    <#list questionList as question>
-                <table class="table">
-                    <tr><th>${question.question}<br>
+    <div class="questionList">
+        <#list questionList as question>
+            <table class="table">
+                <tr><th>${question.question}<br>
                     Детайли: Категория: ${question.category} , Модул: ${question.module} ,
                     Подмодул: ${question.subModule} , Тема: ${question.theme} , Трудност: ${question.difficulty}</th></tr>
-                    <tr><td>A) ${question.answerA}</td></tr>
-                    <tr><td>B) ${question.answerB}</td></tr>
-                    <tr><td>C) ${question.answerC}</td></tr>
-                </table><br>
-        <#else>
-            <p>Няма добавени въпроси до момента</p>
-    </#list>
+                <tr><td>A) ${question.answerA}</td></tr>
+                <tr><td>B) ${question.answerB}</td></tr>
+                <tr><td>C) ${question.answerC}</td></tr>
+            </table><br>
+            <#else>
+                <p>Няма регистрирани въпроси до момента</p>
+        </#list>
+    </div>
 </body>
 </html>
